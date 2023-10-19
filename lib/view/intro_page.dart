@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:spark/constrains.dart';
+import 'package:prozapoti/constrains.dart';
 import 'web_view_page.dart';
 
 class IntroPage extends StatefulWidget {
