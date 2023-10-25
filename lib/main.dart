@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:prozapoti/view/web_view_page.dart';
@@ -40,12 +41,57 @@ class _MyHomePageState extends State<MyHomePage> {
             }));
   }
 
+  Future<bool> showExitPopup(context) async {
+    return await showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            content: SizedBox(
+              height: 90,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Text("Do you want to exit?"),
+                  const SizedBox(height: 20),
+                  Row(
+                    children: [
+                      Expanded(
+                        child: ElevatedButton(
+                          onPressed: () {
+                            exit(0);
+                          },
+                          style: ElevatedButton.styleFrom(backgroundColor: Colors.red.shade800),
+                          child: const Text("Yes"),
+                        ),
+                      ),
+                      const SizedBox(width: 15),
+                      Expanded(
+                          child: ElevatedButton(
+                        onPressed: () {
+                          Navigator.of(context).pop();
+                        },
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.white,
+                        ),
+                        child: const Text("No", style: TextStyle(color: Colors.black)),
+                      ))
+                    ],
+                  )
+                ],
+              ),
+            ),
+          );
+        });
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-        child: pageIndex == 0 ? const IntroPage() : const WebViewPage(),
-      ),
-    );
+    return WillPopScope(
+        onWillPop: () => showExitPopup(context),
+        child: Scaffold(
+          body: SafeArea(
+            child: pageIndex == 0 ? const IntroPage() : const WebViewPage(),
+          ),
+        ));
   }
 }
