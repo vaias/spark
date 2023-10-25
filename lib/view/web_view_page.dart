@@ -6,6 +6,7 @@ import 'package:url_launcher/url_launcher.dart';
 class WebViewPage extends StatefulWidget {
   const WebViewPage({super.key});
 
+
   @override
   State<WebViewPage> createState() => _WebViewPageState();
 }
@@ -15,6 +16,7 @@ class _WebViewPageState extends State<WebViewPage> {
 
   bool isSocialMediaLink(String rawLink) =>
       rawLink.startsWith('whatsapp') || rawLink.contains('fb') || rawLink.contains('youtube') || rawLink.contains('twitter') || rawLink.contains('instagram') || rawLink.contains('tiktok');
+
 
   bool isCantctNumber(String rawLink) => rawLink.startsWith('tel:+88');
 
@@ -69,6 +71,7 @@ class _WebViewPageState extends State<WebViewPage> {
 
               return NavigationActionPolicy.CANCEL;
             }
+
           }
 
           return NavigationActionPolicy.ALLOW;

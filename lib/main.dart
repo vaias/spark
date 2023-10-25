@@ -2,7 +2,7 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:spark/view/web_view_page.dart';
+import 'package:prozapoti/view/web_view_page.dart';
 import 'view/intro_page.dart';
 
 void main() {
