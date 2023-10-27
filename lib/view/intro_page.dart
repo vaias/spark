@@ -1,7 +1,5 @@
-import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:prozapoti/constrains.dart';
-import 'web_view_page.dart';
 
 class IntroPage extends StatefulWidget {
   const IntroPage({super.key});
