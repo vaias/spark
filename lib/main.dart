@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
-import 'package:prozapoti/view/intro_page.dart';
+import 'package:engineeringclassroom/view/intro_page.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 void main() {
@@ -49,7 +49,9 @@ class _MyHomePageState extends State<MyHomePage> {
               if (defaultTargetPlatform == TargetPlatform.android) {
                 webViewController?.reload();
               } else if (defaultTargetPlatform == TargetPlatform.iOS) {
-                webViewController?.loadUrl(urlRequest: URLRequest(url: await webViewController?.getUrl()));
+                webViewController?.loadUrl(
+                    urlRequest:
+                        URLRequest(url: await webViewController?.getUrl()));
               }
             },
           );
@@ -64,7 +66,12 @@ class _MyHomePageState extends State<MyHomePage> {
 //***********************************Social application navigation control management************************************** */
   final String url = 'https://www.humairasbd.com';
   bool isSocialMediaLink(String rawLink) =>
-      rawLink.startsWith('whatsapp') || rawLink.contains('fb') || rawLink.contains('youtube') || rawLink.contains('twitter') || rawLink.contains('instagram') || rawLink.contains('tiktok');
+      rawLink.startsWith('whatsapp') ||
+      rawLink.contains('fb') ||
+      rawLink.contains('youtube') ||
+      rawLink.contains('twitter') ||
+      rawLink.contains('instagram') ||
+      rawLink.contains('tiktok');
 
   bool isCantctNumber(String rawLink) => rawLink.startsWith('tel:+88');
 
@@ -98,7 +105,8 @@ class _MyHomePageState extends State<MyHomePage> {
                           onPressed: () {
                             exit(0);
                           },
-                          style: ElevatedButton.styleFrom(backgroundColor: Colors.red.shade800),
+                          style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.red.shade800),
                           child: const Text("Yes"),
                         ),
                       ),
@@ -111,7 +119,8 @@ class _MyHomePageState extends State<MyHomePage> {
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.white,
                         ),
-                        child: const Text("No", style: TextStyle(color: Colors.black)),
+                        child: const Text("No",
+                            style: TextStyle(color: Colors.black)),
                       ))
                     ],
                   )
@@ -142,7 +151,8 @@ class _MyHomePageState extends State<MyHomePage> {
                 : InAppWebView(
                     initialUrlRequest: URLRequest(url: Uri.parse(url)),
                     initialOptions: InAppWebViewGroupOptions(
-                      crossPlatform: InAppWebViewOptions(useShouldOverrideUrlLoading: true),
+                      crossPlatform: InAppWebViewOptions(
+                          useShouldOverrideUrlLoading: true),
                     ),
                     pullToRefreshController: pullToRefreshController,
                     onWebViewCreated: (InAppWebViewController controller) {
@@ -151,7 +161,15 @@ class _MyHomePageState extends State<MyHomePage> {
                     shouldOverrideUrlLoading: (controller, request) async {
                       var url = request.request.url;
 
-                      if (!["http", "https", "file", "chrome", "data", "javascript", "about"].contains(url?.scheme)) {
+                      if (![
+                        "http",
+                        "https",
+                        "file",
+                        "chrome",
+                        "data",
+                        "javascript",
+                        "about"
+                      ].contains(url?.scheme)) {
                         if (url != null) {
                           await _launchURL(
                             url,

@@ -1,4 +1,4 @@
-package com.prozapoti.web
+package com.engineeringclassroom.app
 
 import io.flutter.embedding.android.FlutterActivity
 
